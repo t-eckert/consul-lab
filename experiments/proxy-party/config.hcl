@@ -1,5 +1,5 @@
 name          = "Proxy Party"
-description   = "Deploys a client and server with Consul CRDs."
+description   = "Deploys a bunch of resources with Consul proxies."
 consul-values = "consul-values.yaml"
 environment   = "kubernetes"
 

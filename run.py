@@ -32,7 +32,15 @@ def up(experiment: str):
 
 
 @click.command("to")
-@click.option("--experiment", "-e", help="The Consul experiment to upgrade to.")
+@click.option(
+    "--experiment",
+    "-e",
+    prompt=f"""Which experiment would you like to upgrade to?
+
+{lab.format.format_experiment_table(lab.experiment.experiment.list_all())}
+Select by NAME""",
+    help="The Consul experiment to upgrade to.",
+)
 def to(experiment: str):
     experiments = lab.experiment.experiment.list_all()
 
@@ -48,6 +56,10 @@ def to(experiment: str):
 @click.option(
     "--experiment",
     "-e",
+    prompt=f"""Which experiment would you like to stop?
+
+{lab.format.format_experiment_table(lab.experiment.experiment.list_all())}
+Select by NAME""",
     help="The Consul experiment to stop.",
 )
 def down(experiment: str):
