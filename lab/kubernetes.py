@@ -11,6 +11,13 @@ def install_kubernetes_resources(resources: list[Path]):
         os.system(f"kubectl apply -f {resource}")
 
 
+def upgrade_kubernetes_resources(resources: list[Path]):
+    print("Upgrading Kubernetes resources")
+
+    for resource in resources:
+        os.system(f"kubectl apply -f {resource}")
+
+
 def uninstall_kubernetes_resources(resources: list[Path]):
     print("Uninstalling Kubernetes resources")
 

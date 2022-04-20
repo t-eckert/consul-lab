@@ -4,8 +4,16 @@ from rich import print
 
 import hcl as parser
 
-from lab.consul import install_consul_on_kubernetes, uninstall_consul_on_kubernetes
-from lab.kubernetes import install_kubernetes_resources, uninstall_kubernetes_resources
+from lab.consul import (
+    install_consul_on_kubernetes,
+    upgrade_consul_on_kubernetes,
+    uninstall_consul_on_kubernetes,
+)
+from lab.kubernetes import (
+    install_kubernetes_resources,
+    upgrade_kubernetes_resources,
+    uninstall_kubernetes_resources,
+)
 
 
 @dataclass
@@ -22,6 +30,13 @@ class Experiment:
         if self.environment == "kubernetes":
             install_consul_on_kubernetes(self.consul_values)
             install_kubernetes_resources(self.kubernetes_resources)
+
+    def to(self):
+        print(f"Upgrading to {self.name}")
+
+        if self.environment == "kubernetes":
+            upgrade_consul_on_kubernetes(self.consul_values)
+            upgrade_kubernetes_resources(self.kubernetes_resources)
 
     def down(self):
         print(f"Stopping {self.name}")

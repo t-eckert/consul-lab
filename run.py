@@ -13,6 +13,7 @@ def cli():
 @click.command("up")
 @click.option(
     "--experiment",
+    "-e",
     prompt=f"""Which experiment would you like to run?
 
 {lab.format.format_experiment_table(lab.experiment.experiment.list_all())}
@@ -30,9 +31,23 @@ def up(experiment: str):
     exp.up()
 
 
+@click.command("to")
+@click.option("--experiment", "-e", help="The Consul experiment to upgrade to.")
+def to(experiment: str):
+    experiments = lab.experiment.experiment.list_all()
+
+    exp = experiments.get(experiment)
+    if not exp:
+        print(f"Could not find experiment {experiment}")
+        return
+
+    exp.to()
+
+
 @click.command("down")
 @click.option(
     "--experiment",
+    "-e",
     help="The Consul experiment to stop.",
 )
 def down(experiment: str):
@@ -47,6 +62,7 @@ def down(experiment: str):
 
 
 cli.add_command(up)
+cli.add_command(to)
 cli.add_command(down)
 
 if __name__ == "__main__":

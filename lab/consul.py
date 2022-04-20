@@ -6,9 +6,12 @@ import os
 
 def install_consul_on_kubernetes(values: Path):
     print("Installing Consul on Kubernetes")
-    ex = f"consul-k8s install -f {values} -auto-approve"
+    os.system(f"consul-k8s install -f {values} -auto-approve")
 
-    os.system(ex)
+
+def upgrade_consul_on_kubernetes(values: Path):
+    print("Upgrading Consul on Kubernetes")
+    os.system(f"consul-k8s upgrade -f {values} -auto-approve")
 
 
 def uninstall_consul_on_kubernetes():
