@@ -7,5 +7,6 @@ kubernetes {
   resources = [
     "client",
     "server",
+    "ingress-gateway",
   ]
 }
