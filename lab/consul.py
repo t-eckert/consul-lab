@@ -17,4 +17,4 @@ def upgrade_consul_on_kubernetes(values: Path):
 def uninstall_consul_on_kubernetes():
     print("Uninstalling Consul on Kubernetes")
 
-    os.system("consul-k8s uninstall -auto-approve")
+    os.system("consul-k8s uninstall -auto-approve -wipe-data")

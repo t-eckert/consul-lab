@@ -9,16 +9,9 @@ controller:
   enabled: true
 server:
   replicas: 3
-terminatingGateways:
-  enabled: true
-apiGateway:
-  enabled: true
-  image: "hashicorp/consul-api-gateway:0.3.0"
-  managedGatewayClass:
-    serviceType: NodePort
-    useHostPorts: true
 ui:
   enabled: true
   service:
     enabled: true
     type: NodePort
+

@@ -1,25 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client
+  name: server
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: client
+      app: server
   template:
     metadata:
-      name: client
+      name: server
       labels:
-        app: client
+        app: server
       annotations:
         consul.hashicorp.com/connect-inject: "true"
     spec:
       containers:
-        - name: client
-          image: docker.mirror.hashicorp.services/curlimages/curl:latest
-          command: [ "/bin/sh", "-c", "--" ]
-          args: [ "while true; do sleep 30; done;" ]
+        - name: server
+          image: docker.mirror.hashicorp.services/hashicorp/http-echo:latest
+          args:
+            - -text="hello world"
+            - -listen=:8080
+          ports:
+            - containerPort: 8080
+              name: http
           resources:
             requests:
               memory: "64Mi"
@@ -27,25 +31,22 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          env:
-          - name: HOST_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.hostIP
-      serviceAccountName: client
+      serviceAccountName: server
       terminationGracePeriodSeconds: 0
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: client
+  name: server
 spec:
   selector:
-    app: client
+    app: server
   ports:
-    - port: 80
+    - name: http
+      port: 80
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: client
+  name: server

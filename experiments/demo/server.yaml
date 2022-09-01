@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: server
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: server
@@ -31,7 +31,6 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-      serviceAccountName: server
       terminationGracePeriodSeconds: 0
 ---
 apiVersion: v1

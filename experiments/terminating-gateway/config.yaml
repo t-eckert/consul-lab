@@ -1,0 +1,12 @@
+global:
+  name: consul
+server:
+  replicas: 1
+connectInject:
+  enabled: true
+controller:
+  enabled: true
+terminatingGateways:
+  enabled: true
+  defaults:
+    replicas: 1

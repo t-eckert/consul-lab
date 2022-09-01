@@ -1,0 +1,31 @@
+global:
+  enabled: true
+  domain: consul
+  image: "consul:1.11.5"
+  imageK8S: hashicorp/consul-k8s-control-plane:0.41.1
+  imageEnvoy: envoyproxy/envoy-alpine:v1.20.2
+  datacenter: dc1
+  federation:
+    enabled: true
+    createFederationSecret: true
+    primaryDatacenter: dc1
+  gossipEncryption:
+    autoGenerate: true
+  tls:
+    enabled: true
+    verify: true
+    enableAutoEncrypt: true
+    httpsOnly: false
+  acls:
+    manageSystemACLs: true
+    createReplicationToken: true
+server:
+  replicas: 1
+  bootstrapExpect: 1
+connectInject:
+  enabled: true
+controller:
+  enabled: true
+meshGateway:
+  enabled: true
+  replicas: 1
