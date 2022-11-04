@@ -1,0 +1,18 @@
+global:
+  name: consul
+  imageK8S: tecke/consul-k8s-control-plane-dev:latest
+  image: tecke/consul-dev:latest
+  logLevel: debug
+  tls:
+    enabled: true
+server:
+  replicas: 1
+connectInject:
+  enabled: true
+  replicas: 1
+controller:
+  enabled: true
+terminatingGateways:
+  enabled: true
+  defaults:
+    replicas: 1

@@ -1,0 +1,10 @@
+global:
+  enablePodSecurityPolicies: true
+  acls:
+    manageSystemACLs: true
+apiGateway:
+  enabled: true
+  image: "hashicorp/consul-api-gateway:0.4.0"
+  managedGatewayClass:
+    serviceType: NodePort
+    useHostPorts: true

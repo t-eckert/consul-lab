@@ -1,0 +1,19 @@
+global:
+  acls:
+    manageSystemACLs: false
+  tls:
+    enabled: false 
+    enableAutoEncrypt: false
+connectInject:
+  enabled: true
+  logLevel: debug 
+  transparentProxy:
+    defaultEnabled: true 
+  envoyExtraArgs: "--log-level debug"
+dns:
+  enabled: false 
+client:
+  extraConfig: "{\"log_level\": \"TRACE\"}"
+server:
+  replicas: 1
+  extraConfig: "{\"log_level\": \"TRACE\"}" 

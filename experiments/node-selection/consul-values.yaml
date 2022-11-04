@@ -1,0 +1,20 @@
+global:
+  name: consul
+  imageK8S: tecke/consul-k8s-control-plane-dev:latest
+  image: tecke/consul-dev:latest
+  logLevel: debug
+  tls:
+    enabled: true
+  acls:
+    manageSystemACLs: true
+    job:
+      nodeSelector: "kubernetes.io/hostname: ip-192-168-13-21.us-east-2.compute.internal"
+server:
+  replicas: 1
+connectInject:
+  enabled: true
+  replicas: 1
+controller:
+  enabled: true
+webhookCertManager:
+  nodeSelector: "kubernetes.io/hostname: ip-192-168-13-21.us-east-2.compute.internal"

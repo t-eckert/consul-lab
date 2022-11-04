@@ -1,0 +1,4 @@
+global:
+  logLevel: debug
+controller:
+  enabled: true

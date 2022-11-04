@@ -1,0 +1,6 @@
+global:
+  logLevel: "debug"
+server:
+  replicas: 1
+syncCatalog:
+  enabled: true

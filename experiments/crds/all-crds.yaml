@@ -1,0 +1,64 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ProxyDefaults
+metadata:
+  name: global
+spec:
+  mode: modename
+  transparentProxy:
+    outboundListenerPort: 8080
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceSplitter
+metadata:
+  name: server
+spec:
+  splits:
+    - weight: 100
+      service: server
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceRouter
+metadata:
+  name: other-server
+spec:
+  routes:
+    - match:
+        http:
+          pathPrefix: /other
+      destination:
+        service: other-server
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceResolver
+metadata:
+  name: server
+spec:
+  defaultSubset: v1
+  subsets:
+    v1:
+      filter: 'Service.Meta.version == v1'
+    v2:
+      filter: 'Service.Meta.version == v2'
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: other-server
+spec:
+  destination:
+    name: other-server
+  sources:
+    - name: server
+      permissions:
+        - action: allow
+          http:
+            methods: ['GET', 'PUT', 'POST', 'DELETE', 'HEAD']
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: TerminatingGateway
+metadata:
+  name: outie
+spec:
+  services:
+    - name: other-server
+
