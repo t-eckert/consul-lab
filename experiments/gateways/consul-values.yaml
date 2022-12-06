@@ -1,0 +1,24 @@
+global:
+  enabled: false
+  name: consul-hashi
+  logLevel: "trace"
+  image: "hashicorppreview/consul-enterprise:1.14-dev"
+  imageK8S: "hashicorppreview/consul-k8s-control-plane:1.0.0-dev-e772718ebf29909122592a5a729642eee7051dd8"
+  datacenter: dc1
+  acls:
+    manageSystemACLs: true
+  enableConsulNamespaces: true
+  adminPartitions:
+    enabled: true
+  enterpriseLicense:
+    secretName: 'consul-ent-license'
+    secretKey: 'key'
+connectInject:
+  enabled: false
+server:
+  enabled: true
+  replicas: 1
+ui:
+  enabled: true
+  service:
+    type: NodePort

@@ -1,0 +1,28 @@
+global:
+  enabled: false
+  logLevel: "trace"
+  image: "hashicorppreview/consul-enterprise:1.14-dev"
+  imageK8S: "hashicorppreview/consul-k8s-control-plane:1.0.0-dev-e772718ebf29909122592a5a729642eee7051dd8"
+  datacenter: dc1
+  acls:
+    manageSystemACLs: true
+    bootstrapToken:
+      secretName: consul-hashi-bootstrap-acl-token
+      secretKey: token
+  enableConsulNamespaces: true
+  adminPartitions:
+    enabled: true
+    name: hashi
+  enterpriseLicense:
+    secretName: 'consul-ent-license'
+    secretKey: 'key'
+externalServers:
+  enabled: true
+  hosts:
+  - consul-hashi-server.default.svc
+apiGateway:
+  enabled: true
+  image: "hashicorppreview/consul-api-gateway:0.5-dev"
+  managedGatewayClass:
+    serviceType: NodePort
+    useHostPorts: true
