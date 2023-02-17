@@ -1,0 +1,8 @@
+global:
+  logLevel: "trace"
+connectInject:
+  enabled: true
+server:
+  enabled: true
+controller:
+  enabled: true

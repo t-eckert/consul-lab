@@ -1,0 +1,15 @@
+global:
+  logLevel: "trace"
+connectInject:
+  enabled: true
+server:
+  enabled: true
+controller:
+  enabled: true
+apiGateway:
+  enabled: true
+  image: hashicorppreview/consul-api-gateway:0.5.1
+  managedGatewayClass:
+    serviceType: NodePort
+    useHostPorts: true
+
