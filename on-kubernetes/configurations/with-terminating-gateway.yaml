@@ -1,11 +1,9 @@
 global:
-  name: consul
-server:
-  replicas: 1
+  logLevel: "debug"
+
 connectInject:
   enabled: true
-controller:
-  enabled: true
+
 terminatingGateways:
   enabled: true
   defaults:

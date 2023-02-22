@@ -8,3 +8,11 @@ spec:
     addresses:
       - "example.com"
     port: 443
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: TerminatingGateway
+metadata:
+  name: terminating-gateway
+spec:
+  services:
+    - name: example-https
