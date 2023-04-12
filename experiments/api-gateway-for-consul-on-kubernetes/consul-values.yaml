@@ -1,0 +1,3 @@
+apiGateway:
+  enabled: true
+  image: docker.mirror.hashicorp.services/hashicorppreview/consul-k8s-control-plane:1.2.0-dev
