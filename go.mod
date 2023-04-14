@@ -1,3 +1,3 @@
-module consul-lab
+module github.com/t-eckert/consul-lab
 
-go 1.19
+go 1.20
