@@ -11,5 +11,5 @@ docker tag consul-k8s-control-plane-dev:latest consul-k8s-control-plane-dev:blue
 kind load docker-image consul-k8s-control-plane-dev:blueberry -n consul-lab
 
 # Install Consul
-helm install consul ./charts/consul -f ~/repos/consul-lab/experiments/api-gateway-for-consul-on-kubernetes/consul-values.yaml -n consul --create-namespace
+helm install consul ./charts/consul -n consul --create-namespace --set global.imageK8S=consul-k8s-control-plane-dev:blueberry
 
