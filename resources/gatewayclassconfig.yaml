@@ -1,0 +1,14 @@
+apiVersion: api-gateway.consul.hashicorp.com/v1alpha1
+kind: GatewayClassConfig
+metadata:
+  name: test-gateway-class-config
+spec:
+  useHostPorts: true
+  logLevel: trace
+  image:
+    consulAPIGateway: "consul-api-gateway:1"
+  consul:
+    scheme: https
+    ports:
+      http: 8501
+      grpc: 8502
