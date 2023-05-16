@@ -1,16 +1,27 @@
 #!/bin/bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+CLUSTER_NAME=gateway-gauntlet
 
 echo ">>> Cleaning up resources from the gauntlet..."
 
-echo "Remove Gateway custom resources? (y/n)"
-read do_
-if [ "$do_consul_removal" = "y" ]
+echo "Remove Gateway resources? (y/n) "
+read do_gateway_resources_removal
+if [ "$do_gateway_resources_removal" = "y" ]
 then
-	echo "Removing Gateway custom resources..."
+	echo "Removing Gateway resources..."
 	cd $SCRIPT_DIR
-	kubectl delete -f gatewayclassconfig.yaml
+	kubectl delete -f gateway-resources.yaml 
+	cd -
+fi
+
+echo "Remove server resources? (y/n) "
+read do_server_removal
+if [ "$do_server_removal" = "y" ]
+then
+	echo "Removing server resources..."
+	cd $SCRIPT_DIR
+	kubectl delete -f server.yaml 
 	cd -
 fi
 

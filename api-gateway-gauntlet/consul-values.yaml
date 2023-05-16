@@ -1,2 +1,3 @@
 global:
   imageK8S: consul-k8s-control-plane-dev:gauntlet
+  logLevel: "trace"
