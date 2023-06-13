@@ -1,3 +1,6 @@
 global:
+  image: hashicorpdev/consul:e2a81aa
   imageK8S: consul-k8s-control-plane-dev:gauntlet
-  logLevel: "trace"
+  logLevel: "debug"
+ui:
+  enabled: true
