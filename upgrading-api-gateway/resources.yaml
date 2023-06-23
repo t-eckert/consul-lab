@@ -1,3 +1,13 @@
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ProxyDefaults
+metadata:
+  name: global
+  namespace: consul
+spec:
+  config:
+    protocol: http
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -50,3 +60,57 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: hello-world
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-admin
+  template:
+    metadata:
+      name: hello-admin
+      labels:
+        app: hello-admin
+      annotations:
+        consul.hashicorp.com/connect-inject: "true"
+    spec:
+      containers:
+        - name: greeter
+          image: docker.mirror.hashicorp.services/hashicorp/http-echo:latest
+          args:
+            - -text="Hello Admin."
+            - -listen=:8080
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      serviceAccountName: hello-admin
+      terminationGracePeriodSeconds: 0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-admin
+spec:
+  selector:
+    app: hello-admin
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hello-admin
+
