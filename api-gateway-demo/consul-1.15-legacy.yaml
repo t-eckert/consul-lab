@@ -1,0 +1,8 @@
+global:
+  image: hashicorp/consul:1.15
+  imageK8S: hashicorp/consul-k8s-control-plane:1.1
+apiGateway:
+  enabled: true
+  image: hashicorp/consul-api-gateway:0.5.4
+  managedGatewayClass:
+    enabled: true

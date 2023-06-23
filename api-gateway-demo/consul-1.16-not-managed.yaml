@@ -1,0 +1,6 @@
+global:
+  image: hashicorp/consul:1.16.0-rc1
+  imageK8S: teckerthashicorp/consul-k8s-control-plane-dev
+connectInject:
+  apiGateway:
+    manageExternalCRDs: false

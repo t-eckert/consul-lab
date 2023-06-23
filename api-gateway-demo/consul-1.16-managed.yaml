@@ -1,0 +1,13 @@
+global:
+  image: hashicorp/consul:1.16.0-rc1
+  imageK8S: consul-k8s-control-plane-dev:local
+connectInject:
+  apiGateway:
+    resources:
+      requests:
+        memory: "123Mi"
+        cpu: "123m"
+      limits: 
+        memory: "154Mi"
+        cpu: "154m"
+
