@@ -48,7 +48,7 @@ spec:
       serviceAccountName: frontend
       containers:
         - name: frontend
-          image: hashicorpdemoapp/frontend:v1.0.3
+          image: hashicorpdemoapp/frontend:v1.0.9
           imagePullPolicy: Always
           env:
             - name: NEXT_PUBLIC_PUBLIC_API_URL

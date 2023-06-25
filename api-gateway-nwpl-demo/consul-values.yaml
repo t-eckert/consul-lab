@@ -1,3 +1,35 @@
 global:
+  name: consul
+  datacenter: dc1
   image: hashicorp/consul:1.16.0-rc1
   imageK8S: hashicorppreview/consul-k8s-control-plane:1.2.0-dev
+  metrics:
+    enabled: true
+    enableAgentMetrics: true
+    agentMetricsRetentionTime: "1m"
+
+server:
+  replicas: 1
+
+ui:
+  enabled: true
+  metrics:
+    enabled: true 
+    provider: "prometheus"
+    baseURL: http://prometheus-server
+
+connectInject:
+  enabled: true
+  default: true
+  metrics:
+    defaultEnabled: true
+    defaultEnableMerging: true
+    defaultPrometheusScrapePort: 20200
+    defaultPrometheusScrapePath: "/metrics"
+    defaultMergedMetricsPort: 20100
+
+controller:
+  enabled: true
+
+prometheus:
+  enabled: true

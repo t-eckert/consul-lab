@@ -32,7 +32,7 @@ metadata:
 data:
   config: |
     {
-      "db_connection": "host=postgres port=5432 user=postgres password=password dbname=products sslmode=disable",
+      "db_connection": "host=postgres port=5432 user=postgres password=password dbname=products sslmode=disable connect_timeout=1000",
       "bind_address": ":9090",
       "metrics_address": ":9103"
     }
@@ -67,7 +67,7 @@ spec:
                 path: conf.json
       containers:
         - name: products-api
-          image: hashicorpdemoapp/product-api:v0.0.21
+          image: hashicorpdemoapp/product-api:v0.0.22
           imagePullPolicy: Always
           ports:
             - containerPort: 9090
@@ -77,7 +77,7 @@ spec:
               value: "/config/conf.json"
           livenessProbe:
             httpGet:
-              path: /health
+              path: /health/readyz
               port: 9090
             initialDelaySeconds: 15
             timeoutSeconds: 1
