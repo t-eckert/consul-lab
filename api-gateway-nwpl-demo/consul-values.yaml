@@ -9,9 +9,6 @@ global:
     enabled: true
     enableAgentMetrics: true
     agentMetricsRetentionTime: "1m"
-  enterpriseLicense:
-    secretName: consul-enterprise-license
-    secretKey: license
 
 server:
   replicas: 1
