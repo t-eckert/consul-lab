@@ -8,6 +8,8 @@ spec:
       action: allow
     - name: nginx
       action: allow
+    - name: hashicups-gateway
+      action: allow
   destination:
     name: public-api
 ---
@@ -51,6 +53,8 @@ metadata:
 spec:
   sources:
     - name: nginx
+      action: allow
+    - name: hashicups-gateway
       action: allow
   destination:
     name: frontend
