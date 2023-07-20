@@ -1,0 +1,37 @@
+connectInject:
+  default: true
+
+externalServers:
+  enabled: true
+  hosts: 
+  - consul-cluster-02.consul.0d2e1143-58a9-4292-a0ad-05bdd111ecbe.aws.hashicorp.cloud
+  httpsPort: 443
+  k8sAuthMethodHost: https://81454AD27B06FF8C703B0D3BD35CF604.yl4.us-west-2.eks.amazonaws.com
+  useSystemRoots: true
+
+global:
+  acls:
+    bootstrapToken:
+      secretName: hcp-secrets
+      secretKey: bootstrapToken
+    manageSystemACLs: true
+  datacenter: consul-cluster-02
+  enableConsulNamespaces: true
+  imageConsulDataplane: hashicorp/consul-dataplane:1.2.0
+  imageK8S: hashicorp/consul-k8s-control-plane:1.2.0
+  name: consul
+  peering:
+    enabled: true
+  tls:
+    caCert:
+      secretName: hcp-secrets
+      secretKey: caCert
+    enableAutoEncrypt: true
+    enabled: true
+
+meshGateway:
+  enabled: true
+server:
+  enabled: false
+terminatingGateways:
+  enabled: false

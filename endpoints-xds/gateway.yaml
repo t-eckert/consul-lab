@@ -1,0 +1,42 @@
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internal
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+  name: api-gateway
+  namespace: dashboard
+spec:
+  gatewayClassName: consul
+  listeners:
+  - allowedRoutes:
+      namespaces:
+        from: Same
+    name: http
+    port: 80
+    protocol: HTTP
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: dashboard-route
+  namespace: dashboard
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: api-gateway
+  rules:
+  - backendRefs:
+    - group: ""
+      kind: Service
+      name: dashboard
+      namespace: dashboard
+      port: 9002
+      weight: 1
+    matches:
+    - path:
+        type: PathPrefix
+        value: /
