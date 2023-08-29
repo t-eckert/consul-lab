@@ -1,0 +1,13 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: GatewayClassConfig
+metadata:
+  name: consul-api-gateway-orange
+spec:
+  deployment:
+    resources:
+      limits:
+        cpu: 122m
+        memory: 122Mi
+      requests:
+        cpu: 111m
+        memory: 111Mi

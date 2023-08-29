@@ -1,0 +1,5 @@
+{
+	"Kind": "service-detaults",
+	"Name": "web",
+	"Protocol": "http"
+}

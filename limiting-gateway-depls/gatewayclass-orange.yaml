@@ -1,0 +1,10 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: GatewayClass
+metadata:
+  name: consul-orange
+spec:
+  controllerName: consul.hashicorp.com/gateway-controller
+  parametersRef:
+    group: consul.hashicorp.com
+    kind: GatewayClassConfig
+    name: consul-api-gateway-orange

@@ -1,0 +1,23 @@
+global:
+  enabled: false
+  imageK8S: hashicorp/consul-k8s-control-plane:1.1
+  image: hashicorp/consul:1.15
+  logLevel: "trace"
+  acls:
+    manageSystemACLs: true
+
+apiGateway:
+  enabled: true
+  image: hashicorp/consul-api-gateway:0.5.4
+  managedGatewayClass:
+    enabled: true
+
+server:
+  replicas: 3
+  enabled: true
+
+connectInject:
+  default: true
+  apiGateway:
+    logLevel: "trace"
+

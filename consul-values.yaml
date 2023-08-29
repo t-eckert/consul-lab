@@ -1,0 +1,32 @@
+global:
+  datacenter: test-custom-build
+  imageK8S: hashicorppreview/consul-k8s-control-plane:1.2.0-dev
+  logLevel: "trace"
+  acls:
+    manageSystemACLs: true
+    bootstrapToken:
+      secretName: acl-bootstrap
+      secretKey: bootstrapToken
+  tls:
+    enabled: true
+
+
+externalServers:
+  enabled: true
+  hosts: ["test-custom-build.consul.fc085032-c7a5-40cb-b3d7-6eccaf9163c3.aws.hashicorp.cloud"]
+  httpsPort: 443
+  useSystemRoots: true
+
+server:
+  enabled: false
+
+connectInject:
+  default: true
+  apiGateway:
+    logLevel: "trace"
+
+meshGateway:
+  enabled: false
+
+ingressGateways:
+  enabled: false

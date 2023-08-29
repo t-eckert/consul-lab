@@ -1,9 +1,7 @@
 global:
   name: consul
   datacenter: dc1
-  image: hashicorppreview/consul:1.16-dev
   imageK8S: consul-k8s-control-plane-dev:local
-  imageConsulDataplane: hashicorppreview/consul-dataplane:1.2-dev
   logLevel: "debug"
 
 server:
@@ -17,8 +15,6 @@ connectInject:
   default: true
   apiGateway:
     managedGatewayClass:
-      nodeSelector: |
-        beta.kubernetes.io/arch: amd64
       resources:
         requests:
           memory: "121Mi"

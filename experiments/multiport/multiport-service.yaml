@@ -41,9 +41,10 @@ metadata:
   labels:
     app: web
   annotations:
-    'consul.hashicorp.com/connect-inject': 'true'
-    'consul.hashicorp.com/connect-service': 'web,web-admin'
-    'consul.hashicorp.com/connect-service-port': '8080,9090'
+    "consul.hashicorp.com/transparent-proxy": "false"
+    "consul.hashicorp.com/connect-inject": "true"
+    "consul.hashicorp.com/connect-service": "web,web-admin"
+    "consul.hashicorp.com/connect-service-port": "8080,9090"
 spec:
   containers:
     - name: web
@@ -57,7 +58,7 @@ spec:
     - name: web-admin
       image: hashicorp/http-echo:latest
       args:
-        - -text="hello world from 9090"
+        - -text="hello admin"
         - -listen=:9090
       ports:
         - containerPort: 9090

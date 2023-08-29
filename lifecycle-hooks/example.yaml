@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-container-demo
+  namespace: lifecycle
+  annotations:
+    consul.hashicorp.com/connect-inject: "false"
+spec:
+  containers:
+    - image: busybox
+      command: ["/bin/sh"]
+      args:
+        [
+          "-c",
+          "while true; do echo echo $(date -u) 'Written by busybox sidecar container' >> /var/log/index.html; sleep 10;done",
+        ]
+      name: sidecar-container
+      volumeMounts:
+        - name: var-logs
+          mountPath: /var/log
+    - image: nginx
+      name: main-container
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: var-logs
+          mountPath: /usr/share/nginx/html
+  dnsPolicy: Default
+  volumes:
+    - name: var-logs
+      emptyDir: {}
