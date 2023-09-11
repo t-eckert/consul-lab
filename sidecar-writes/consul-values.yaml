@@ -1,0 +1,4 @@
+global:
+  imageK8S: consul-k8s-control-plane-dev:local
+  imageConsulDataplane: ttl.sh/consul-dataplane-2:24h
+  logLevel: "debug"
