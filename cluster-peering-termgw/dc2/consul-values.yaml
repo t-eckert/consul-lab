@@ -1,0 +1,30 @@
+global:
+  image: teckerthashicorp/consul:dev
+  imageK8S: hashicorp/consul-k8s-control-plane:1.2.1
+  datacenter: dc2
+  peering:
+    enabled: true
+  tls:
+    enabled: true
+    enableAutoEncrypt: true
+    verify: true
+
+connectInject:
+  enabled: true
+  default: true
+
+dns:
+  enabled: true
+  enableRedirection: true
+
+meshGateway:
+  enabled: true
+
+terminatingGateways:
+  enabled: true
+
+ui:
+  enabled: true
+  service:
+    enabled: true
+    type: LoadBalancer

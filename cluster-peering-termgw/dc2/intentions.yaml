@@ -1,0 +1,38 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: deny-all
+spec:
+  destination:
+    name: "*"
+  sources:
+    - name: "*"
+      action: deny
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: dc1-frontend-to-dc2-termgw
+spec:
+  destination:
+    name: terminating-gateway
+  sources:
+    - name: frontend
+      action: allow
+      peer: dc1
+    - name: backend
+      action: allow
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: external
+spec:
+  destination:
+    name: external
+  sources:
+    - name: frontend
+      action: allow
+      peer: dc1
+    - name: backend
+      action: allow

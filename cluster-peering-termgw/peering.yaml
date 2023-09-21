@@ -1,0 +1,17 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: Mesh
+metadata:
+  name: mesh
+  namespace: consul
+spec:
+  peering:
+    peerThroughMeshGateways: true
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ProxyDefaults
+metadata:
+  name: global
+  namespace: consul
+spec:
+  meshGateway:
+    mode: local
