@@ -15,10 +15,10 @@ spec:
 apiVersion: consul.hashicorp.com/v1alpha1
 kind: ServiceIntentions
 metadata:
-  name: external
+  name: external-google
 spec:
   destination:
-    name: external
+    name: external-google
   sources:
     - name: frontend
       action: allow

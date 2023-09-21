@@ -14,8 +14,6 @@ cd $ROOT/dc1/
 cat consul-values.yaml
 helm install consul hashicorp/consul --version 1.2.1 -f consul-values.yaml --namespace consul --create-namespace --wait
 
-echo "DC1::Applying frontend, intentions"
-kubectl apply -f frontend.yaml
 
 echo "DC1::Applying mesh and proxy defaults for peering"
 cd $ROOT
@@ -46,12 +44,29 @@ echo "DC2::Applying peering-dialer"
 cd $ROOT/dc2/
 kubectl apply -f peering-dialer.yaml
 
-echo "PEERING::Verifying..."
+echo "PEERING::Waiting..."
+sleep 30
+
+echo "PEERING::Verifying peer"
 kubectl exec --namespace=consul -it --context=$DC1 consul-consul-server-0 \
 -- curl --cacert /consul/tls/ca/tls.crt --header "X-Consul-Token: $(kubectl --context=$DC1 --namespace=consul get secrets consul-consul-bootstrap-acl-token -o go-template='{{.data.token|base64decode}}')" "https://127.0.0.1:8501/v1/peering/dc2" \
  | jq '.State' 
 
+echo "DC1::Applying frontend"
+kubectl config use-context $DC1
+cd $ROOT/dc1/
+kubectl apply -f frontend.yaml
 
+echo "DC1::Exporting frontend service to DC2"
+kubectl apply -f exported-services.yaml
+
+echo "DC2::Applying backend"
+kubectl config use-context $DC2
+cd $ROOT/dc2/
+kubectl apply -f backend.yaml
+
+echo "DC2::Applying external-google"
+kubectl apply -f external-google.yaml
 
 
 

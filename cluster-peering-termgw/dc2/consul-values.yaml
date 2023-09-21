@@ -2,6 +2,7 @@ global:
   image: teckerthashicorp/consul:dev
   imageK8S: hashicorp/consul-k8s-control-plane:1.2.1
   datacenter: dc2
+  logLevel: trace
   peering:
     enabled: true
   tls:
@@ -12,6 +13,8 @@ global:
 connectInject:
   enabled: true
   default: true
+  transparentProxy:
+    defaultEnabled: true
 
 dns:
   enabled: true

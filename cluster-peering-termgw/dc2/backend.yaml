@@ -10,7 +10,7 @@ spec:
   containers:
     - name: backend
       image: debian:bullseye
-      command: ["/bin/sh", "inf"]
+      command: ["sleep", "inf"]
 ---
 apiVersion: v1
 kind: Service

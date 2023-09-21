@@ -1,7 +1,7 @@
 apiVersion: consul.hashicorp.com/v1alpha1
 kind: ServiceDefaults
 metadata:
-  name: external
+  name: external-google
 spec:
   protocol: tcp
   destination:
@@ -10,22 +10,9 @@ spec:
     port: 443
 ---
 apiVersion: consul.hashicorp.com/v1alpha1
-kind: ServiceIntentions
-metadata:
-  name: external
-spec:
-  destination:
-    name: external
-  sources:
-    - name: frontend
-      action: allow
-    - name: backend
-      action: allow
----
-apiVersion: consul.hashicorp.com/v1alpha1
 kind: TerminatingGateway
 metadata:
   name: terminating-gateway
 spec:
   services:
-    - name: external
+    - name: external-google
