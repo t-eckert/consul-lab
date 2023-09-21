@@ -1,17 +1,6 @@
 apiVersion: consul.hashicorp.com/v1alpha1
 kind: ServiceIntentions
 metadata:
-  name: deny-all
-spec:
-  destination:
-    name: "*"
-  sources:
-    - name: "*"
-      action: deny
----
-apiVersion: consul.hashicorp.com/v1alpha1
-kind: ServiceIntentions
-metadata:
   name: dc1-frontend-to-dc2-termgw
 spec:
   destination:
