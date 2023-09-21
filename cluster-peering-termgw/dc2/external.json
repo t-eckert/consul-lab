@@ -1,0 +1,14 @@
+{
+	"Node": "external",
+	"Address": "google.com",
+	"NodeMeta": {
+		"external-node": "true",
+		"external-probe": "true"
+	},
+	"Service": {
+		"Address": "google.com",
+		"ID": "external",
+		"Service": "external",
+		"Port": 443
+	}
+}
