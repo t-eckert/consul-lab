@@ -7,8 +7,8 @@
 	},
 	"Service": {
 		"Address": "google.com",
-		"ID": "external",
-		"Service": "external",
+		"ID": "external-google",
+		"Service": "external-google",
 		"Port": 443
 	}
 }
