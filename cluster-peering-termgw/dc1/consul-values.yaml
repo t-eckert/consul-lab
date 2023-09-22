@@ -6,9 +6,11 @@ global:
   peering:
     enabled: true
   tls:
-    enabled: true 
+    enabled: true
     enableAutoEncrypt: true
     verify: true
+  acls:
+    manageSystemACLs: true
 
 connectInject:
   enabled: true
@@ -36,4 +38,3 @@ ui:
   service:
     enabled: true
     type: LoadBalancer
-

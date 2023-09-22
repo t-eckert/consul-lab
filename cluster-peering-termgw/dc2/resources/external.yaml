@@ -1,12 +1,12 @@
 apiVersion: consul.hashicorp.com/v1alpha1
 kind: ServiceDefaults
 metadata:
-  name: external-google
+  name: external
 spec:
   protocol: tcp
   destination:
     addresses:
-      - "google.com"
+      - "jsonplaceholder.typicode.com"
     port: 443
 ---
 apiVersion: consul.hashicorp.com/v1alpha1
@@ -15,4 +15,4 @@ metadata:
   name: terminating-gateway
 spec:
   services:
-    - name: external-google
+    - name: external

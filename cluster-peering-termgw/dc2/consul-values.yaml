@@ -9,6 +9,8 @@ global:
     enabled: true
     enableAutoEncrypt: true
     verify: true
+  acls:
+    manageSystemACLs: true
 
 connectInject:
   enabled: true
@@ -19,6 +21,14 @@ connectInject:
 dns:
   enabled: true
   enableRedirection: true
+
+server:
+  enabled: true
+  replicas: 1
+  extraConfig: |
+    {
+      "log_level": "TRACE"
+    }
 
 meshGateway:
   enabled: true
