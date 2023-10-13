@@ -10,3 +10,6 @@ spec:
     - name: backend
       consumers:
         - peer: dc1
+    - name: web
+      consumers:
+        - peer: dc1

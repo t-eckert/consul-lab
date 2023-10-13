@@ -1,9 +1,9 @@
 #!/bin/bash
 
-ROOT=~/repos/consul-lab/cluster-peering-termgw
+ROOT=~/Projects/consul-lab/cluster-peering-termgw
 CONSUL_DIR=~/repos/consul
-DC1=eks-dc1
-DC2=eks-dc2
+DC1=dc1
+DC2=dc2
 
 cat README.md
 read -p "Press enter to continue"
@@ -17,6 +17,7 @@ helm install consul hashicorp/consul --version 1.2.1 -f consul-values.yaml --nam
 echo "DC1::Applying mesh and proxy defaults for peering"
 cd $ROOT/dc1/resources/
 kubectl apply -f peering.yaml
+kubectl apply -f mesh.yaml
 
 echo "DC1::Applying peering-acceptor"
 cd $ROOT/dc1/resources/
@@ -29,11 +30,13 @@ cat consul-values.yaml
 helm install consul hashicorp/consul --version 1.2.1 -f consul-values.yaml --namespace consul --create-namespace --wait
 
 echo "DC2::Applying intentions"
+cd $ROOT/dc2/resources/
 kubectl apply -f intentions.yaml
 
 echo "DC2::Applying mesh and proxy defaults for peering"
 cd $ROOT/dc2/resources/
 kubectl apply -f peering.yaml
+kubectl apply -f mesh.yaml
 
 echo "PEERING::Copying token DC1->DC2"
 cd $ROOT
@@ -64,8 +67,13 @@ kubectl config use-context $DC2
 cd $ROOT/dc2/resources/
 kubectl apply -f backend.yaml
 
-echo "DC2::Applying external-google"
-kubectl apply -f external-google.yaml
+echo "DC2::Applying external"
+kubectl apply -f external.yaml
 
+echo "DC2::Exporting service to DC1"
+kubectl apply -f exported-services.yaml
+
+echo "DC2::Applying Web"
+kubectl apply -f web.yaml
 
 

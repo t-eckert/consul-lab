@@ -2,7 +2,7 @@ global:
   image: teckerthashicorp/consul:dev
   imageK8S: hashicorp/consul-k8s-control-plane:1.2.1
   datacenter: dc1
-  logLevel: trace
+  logLevel: debug
   peering:
     enabled: true
   tls:
@@ -27,7 +27,7 @@ server:
   replicas: 1
   extraConfig: |
     {
-      "log_level": "TRACE"
+      "log_level": "DEBUG"
     }
 
 meshGateway:
