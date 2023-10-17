@@ -12,7 +12,7 @@ echo "DC1::Installing Consul"
 kubectl config use-context $DC1
 cd $ROOT/dc1/
 cat consul-values.yaml
-helm install consul hashicorp/consul --version 1.2.1 -f consul-values.yaml --namespace consul --create-namespace --wait
+helm install consul hashicorp/consul --version 1.2.2 -f consul-values.yaml --namespace consul --create-namespace --wait
 
 echo "DC1::Applying mesh and proxy defaults for peering"
 cd $ROOT/dc1/resources/
@@ -27,7 +27,7 @@ echo "DC2::Installing Consul"
 kubectl config use-context $DC2
 cd $ROOT/dc2/
 cat consul-values.yaml
-helm install consul hashicorp/consul --version 1.2.1 -f consul-values.yaml --namespace consul --create-namespace --wait
+helm install consul hashicorp/consul --version 1.2.2 -f consul-values.yaml --namespace consul --create-namespace --wait
 
 echo "DC2::Applying intentions"
 cd $ROOT/dc2/resources/
@@ -68,12 +68,15 @@ cd $ROOT/dc2/resources/
 kubectl apply -f backend.yaml
 
 echo "DC2::Applying external"
+kubectl config use-context $DC2
 kubectl apply -f external.yaml
 
 echo "DC2::Exporting service to DC1"
+kubectl config use-context $DC2
 kubectl apply -f exported-services.yaml
 
 echo "DC2::Applying Web"
+kubectl config use-context $DC2
 kubectl apply -f web.yaml
 
 

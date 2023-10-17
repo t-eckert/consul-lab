@@ -57,3 +57,7 @@ metadata:
   name: web
 spec:
   protocol: http
+#  destination:
+#    addresses:
+#      - "34.29.227.155"
+#    port: 80

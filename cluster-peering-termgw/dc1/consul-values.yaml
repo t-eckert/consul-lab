@@ -1,8 +1,7 @@
 global:
-  image: teckerthashicorp/consul:dev
-  imageK8S: hashicorp/consul-k8s-control-plane:1.2.1
+  image: hashicorp/consul-enterprise:1.16.2-ent
   datacenter: dc1
-  logLevel: debug
+  logLevel: trace
   peering:
     enabled: true
   tls:
@@ -11,6 +10,9 @@ global:
     verify: true
   acls:
     manageSystemACLs: true
+  enterpriseLicense:
+    secretName: 'consul-ent-license'
+    secretKey: 'key'
 
 connectInject:
   enabled: true
@@ -27,11 +29,12 @@ server:
   replicas: 1
   extraConfig: |
     {
-      "log_level": "DEBUG"
+      "log_level": "TRACE"
     }
 
 meshGateway:
   enabled: true
+  replicas: 2
 
 ui:
   enabled: true
