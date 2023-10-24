@@ -1,0 +1,8 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: RouteAuthFilter
+metadata:
+  name: auth-filter
+spec:
+  jwt:
+    providers:
+      - name: something-else

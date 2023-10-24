@@ -1,0 +1,16 @@
+global:
+  image: hashicorppreview/consul-enterprise:1.17-dev
+  imageK8S: consul-k8s-control-plane-dev:local
+  imageConsulDataplane: hashicorppreview/consul-dataplane:1.2-dev
+  logLevel: "debug"
+  enterpriseLicense:
+    secretName: consul-enterprise-license
+    secretKey: license
+  acls:
+    manageSystemACLs: false
+
+server:
+  replicas: 1
+
+controller:
+  enabled: true
