@@ -3,11 +3,12 @@ kind: ServiceDefaults
 metadata:
   name: external
 spec:
-  protocol: tcp
-  destination:
-    addresses:
-      - "jsonplaceholder.typicode.com"
-    port: 443
+  protocol: http
+  # We do not need the registration here, as we are registering the services with the Consul API.
+#  destination:
+#    addresses:
+#      - "jsonplaceholder.typicode.com"
+#    port: 443
 ---
 apiVersion: consul.hashicorp.com/v1alpha1
 kind: TerminatingGateway
@@ -15,4 +16,5 @@ metadata:
   name: terminating-gateway
 spec:
   services:
+    - name: web
     - name: external

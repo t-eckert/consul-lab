@@ -1,0 +1,14 @@
+{
+	"Node": "web",
+	"Address": "34.16.115.23",
+	"NodeMeta": {
+		"external-node": "true",
+		"external-probe": "true"
+	},
+	"Service": {
+		"Address": "34.16.115.23",
+		"ID": "web",
+		"Service": "web",
+		"Port": 80
+	}
+}

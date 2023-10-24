@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: web
+  namespace: default
+automountServiceAccountToken: true
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      name: web
+      labels:
+        app: web
+      annotations:
+        'consul.hashicorp.com/connect-inject': 'false'
+    spec:
+      containers:
+        - name: web
+          # Using alpine vs latest as there is a build issue with M1s. Also other tests in multiport-app reference
+          # alpine so standardizing this.
+          image: docker.mirror.hashicorp.services/hashicorp/http-echo:alpine
+          args:
+            - -text="hello world"
+            - -listen=:3000
+          ports:
+            - containerPort: 3000
+              name: http
+      serviceAccountName: web
+      terminationGracePeriodSeconds: 0 # so deletion is quick
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: default
+  labels:
+    app: web
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: web
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: web
+spec:
+  protocol: http
+#  destination:
+#    addresses:
+#      - "34.29.227.155"
+#    port: 80
