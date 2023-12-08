@@ -1,0 +1,8 @@
+global:
+  imageK8S: consul-k8s-control-plane:local
+  imageConsulDataplane: consul-dataplane:local
+
+connectInject:
+  sidecarProxy:
+    lifecycle:
+      defaultStartupGracePeriodSeconds: 30

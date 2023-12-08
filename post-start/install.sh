@@ -5,13 +5,13 @@ HELM_CHART=~/repos/consul-k8s/charts/consul
 CONSUL_DATAPLANE=~/repos/consul-dataplane
 
 cd $CONSUL_DATAPLANE
-
+make dev-docker
+kind load docker-image consul-dataplane:local 
 cd -
 
 cd $CONSUL_K8S
-make control-plane-dev-docker
-docker tag consul-k8s-control-plane-dev consul-k8s-control-plane-dev:local
-kind load docker-image consul-k8s-control-plane-dev:local -n one
+make dev-docker
+kind load docker-image consul-k8s-control-plane:local
 cd -
 
 helm install consul $HELM_CHART -f ./consul-values.yaml --namespace consul --create-namespace --wait

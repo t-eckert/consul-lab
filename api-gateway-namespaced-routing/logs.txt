@@ -1,0 +1,156 @@
+==> Starting Consul agent...
+               Version: '1.18.0-dev+ent'
+              Revision: 'c6d0b4aff5+CHANGES'
+            Build Date: '2023-12-06 18:53:31 +0000 UTC'
+               Node ID: '516acd64-8283-27ea-5248-7381d89486a1'
+             Node name: 'consul-consul-server-0'
+            Datacenter: 'dc1' (Segment: '<all>')
+                Server: true (Bootstrap: true)
+           Client Addr: [0.0.0.0] (HTTP: 8500, HTTPS: -1, gRPC: 8502, gRPC-TLS: -1, DNS: 8600)
+          Cluster Addr: 10.244.0.8 (LAN: 8301, WAN: 8302)
+     Gossip Encryption: false
+      Auto-Encrypt-TLS: false
+           ACL Enabled: false
+     Reporting Enabled: true
+    ACL Default Policy: allow
+             HTTPS TLS: Verify Incoming: false, Verify Outgoing: false, Min Version: TLSv1_2
+              gRPC TLS: Verify Incoming: false, Min Version: TLSv1_2
+      Internal RPC TLS: Verify Incoming: false, Verify Outgoing: false (Verify Hostname: false), Min Version: TLSv1_2
+
+==> Log data will now stream in as it occurs:
+
+2023-12-06T20:56:45.017Z [WARN]  agent: BootstrapExpect is set to 1; this is the same as Bootstrap mode.
+2023-12-06T20:56:45.017Z [WARN]  agent: bootstrap = true: do not enable unless necessary
+2023-12-06T20:56:45.117Z [WARN]  agent.auto_config: BootstrapExpect is set to 1; this is the same as Bootstrap mode.
+2023-12-06T20:56:45.117Z [WARN]  agent.auto_config: bootstrap = true: do not enable unless necessary
+2023-12-06T20:56:45.119Z [INFO]  agent: initialized license: id=32c2c9bf-485a-f3d6-11d8-1ef7419fd051 expiration="2025-10-15 00:00:00 +0000 UTC" features="Automated Backups, Automated Upgrades, Enhanced Read Scalability, Network Segments, Redundancy Zone, Advanced Network Federation, Namespaces, SSO, Audit Logging, Admin Partitions"
+2023-12-06T20:56:45.119Z [INFO]  agent: started routine: routine=license-manager
+2023-12-06T20:56:45.119Z [INFO]  agent: started routine: routine=license-monitor
+2023-12-06T20:56:45.221Z [INFO]  agent.server.raft: initial configuration: index=1 servers="[{Suffrage:Voter ID:516acd64-8283-27ea-5248-7381d89486a1 Address:10.244.0.8:8300}]"
+2023-12-06T20:56:45.222Z [INFO]  agent.server.raft: entering follower state: follower="Node at 10.244.0.8:8300 [Follower]" leader-address= leader-id=
+2023-12-06T20:56:45.224Z [INFO]  agent.server.serf.wan: serf: EventMemberJoin: consul-consul-server-0.dc1 10.244.0.8
+2023-12-06T20:56:45.225Z [INFO]  agent.server.serf.lan: serf: EventMemberJoin: consul-consul-server-0 10.244.0.8
+2023-12-06T20:56:45.310Z [INFO]  agent.router: Initializing LAN area manager
+2023-12-06T20:56:45.311Z [INFO]  agent.server: Handled event for server in area: event=member-join server=consul-consul-server-0.dc1 area=wan
+2023-12-06T20:56:45.311Z [INFO]  agent.server: Adding LAN server: server="consul-consul-server-0 (Addr: tcp/10.244.0.8:8300) (DC: dc1)"
+2023-12-06T20:56:45.314Z [INFO]  agent.server.autopilot: reconciliation now disabled
+2023-12-06T20:56:45.413Z [INFO]  agent.server: started routine: routine="rate limit controller"
+2023-12-06T20:56:45.413Z [INFO]  agent.server.cert-manager: initialized server certificate management
+2023-12-06T20:56:45.414Z [INFO]  agent: Started DNS server: address=0.0.0.0:8600 network=udp
+2023-12-06T20:56:45.414Z [INFO]  agent: Started DNS server: address=0.0.0.0:8600 network=tcp
+2023-12-06T20:56:45.414Z [INFO]  agent.http: Registered resource endpoint: endpoint=/tenancy/v2beta1/namespace/
+2023-12-06T20:56:45.415Z [INFO]  agent.http: Registered resource endpoint: endpoint=/multicluster/v2beta1/namespaceexportedservices/
+2023-12-06T20:56:45.415Z [INFO]  agent.http: Registered resource endpoint: endpoint=/internal/v1/tombstone/
+2023-12-06T20:56:45.415Z [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/recordlabel/
+2023-12-06T20:56:45.415Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/computedexplicitdestinations/
+2023-12-06T20:56:45.416Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/meshgateway/
+2023-12-06T20:56:45.416Z [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/workload/
+2023-12-06T20:56:45.416Z [INFO]  agent.http: Registered resource endpoint: endpoint=/auth/v2beta1/computedtrafficpermissions/
+2023-12-06T20:56:45.416Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/proxyconfiguration/
+2023-12-06T20:56:45.416Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/proxystatetemplate/
+2023-12-06T20:56:45.416Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/destinationpolicy/
+2023-12-06T20:56:45.416Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/computedroutes/
+2023-12-06T20:56:45.417Z [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v2/artist/
+2023-12-06T20:56:45.417Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/computedproxyconfiguration/
+2023-12-06T20:56:45.417Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/tcproute/
+2023-12-06T20:56:45.417Z [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/healthstatus/
+2023-12-06T20:56:45.418Z [INFO]  agent.http: Registered resource endpoint: endpoint=/auth/v2beta1/trafficpermissions/
+2023-12-06T20:56:45.420Z [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/album/
+2023-12-06T20:56:45.420Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/destinations/
+2023-12-06T20:56:45.421Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/httproute/
+2023-12-06T20:56:45.421Z [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/service/
+2023-12-06T20:56:45.421Z [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/node/
+2023-12-06T20:56:45.421Z [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/failoverpolicy/
+2023-12-06T20:56:45.421Z [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/artist/
+2023-12-06T20:56:45.421Z [INFO]  agent.http: Registered resource endpoint: endpoint=/multicluster/v2beta1/partitionexportedservices/
+2023-12-06T20:56:45.511Z [INFO]  agent.http: Registered resource endpoint: endpoint=/multicluster/v2beta1/exportedservices/
+2023-12-06T20:56:45.511Z [INFO]  agent.http: Registered resource endpoint: endpoint=/multicluster/v2beta1/computedexportedservices/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/executive/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/concept/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/grpcroute/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/meshconfiguration/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/nodehealthstatus/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/auth/v2beta1/workloadidentity/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v2/album/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/serviceendpoints/
+2023-12-06T20:56:45.512Z [INFO]  agent.http: Registered resource endpoint: endpoint=/tenancy/v2beta1/partition/
+2023-12-06T20:56:45.512Z [INFO]  agent: Starting server: address=[::]:8500 network=tcp protocol=http
+2023-12-06T20:56:45.513Z [INFO]  agent: Started gRPC listeners: port_name=grpc address=[::]:8502 network=tcp
+2023-12-06T20:56:45.513Z [INFO]  agent: Retry join is supported for the following discovery methods: cluster=LAN discovery_methods="aliyun aws azure digitalocean gce hcp k8s linode mdns os packet scaleway softlayer tencentcloud triton vsphere"
+2023-12-06T20:56:45.513Z [INFO]  agent: Joining cluster...: cluster=LAN
+2023-12-06T20:56:45.513Z [INFO]  agent: (LAN) joining: lan_addresses=["consul-consul-server.consul.svc:8301"]
+2023-12-06T20:56:45.515Z [INFO]  agent: started state syncer
+2023-12-06T20:56:45.515Z [INFO]  agent: Consul agent running!
+2023-12-06T20:56:45.615Z [INFO]  agent: (LAN) joined: number_of_nodes=1
+2023-12-06T20:56:45.615Z [INFO]  agent: Join cluster completed. Synced with initial agents: cluster=LAN num_agents=1
+2023-12-06T20:56:53.565Z [WARN]  agent.server.raft: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+2023-12-06T20:56:53.566Z [INFO]  agent.server.raft: entering candidate state: node="Node at 10.244.0.8:8300 [Candidate]" term=2
+2023-12-06T20:56:53.612Z [ERROR] agent.anti_entropy: failed to sync remote state: error="No cluster leader"
+2023-12-06T20:56:53.632Z [INFO]  agent.server.raft: election won: term=2 tally=1
+2023-12-06T20:56:53.632Z [INFO]  agent.server.raft: entering leader state: leader="Node at 10.244.0.8:8300 [Leader]"
+2023-12-06T20:56:53.633Z [INFO]  agent.server: cluster leadership acquired
+2023-12-06T20:56:53.633Z [INFO]  agent.server: New leader elected: payload=consul-consul-server-0
+2023-12-06T20:56:53.640Z [INFO]  agent.server: Created the builtin partition: partition=default
+2023-12-06T20:56:53.713Z [INFO]  agent.server: Created the builtin namespace: namespace=default
+2023-12-06T20:56:53.713Z [INFO]  agent.leader: started routine: routine="wan serf membership sync"
+2023-12-06T20:56:53.713Z [INFO]  agent.leader: started routine: routine="partition and wan federation toggle"
+2023-12-06T20:56:53.717Z [INFO]  agent.server.autopilot: reconciliation now enabled
+2023-12-06T20:56:53.717Z [INFO]  agent.leader: started routine: routine="federation state anti-entropy"
+2023-12-06T20:56:53.717Z [INFO]  agent.leader: started routine: routine="federation state pruning"
+2023-12-06T20:56:53.718Z [INFO]  agent.leader: started routine: routine="streaming peering resources"
+2023-12-06T20:56:53.718Z [INFO]  agent.leader: started routine: routine="metrics for streaming peering resources"
+2023-12-06T20:56:53.718Z [INFO]  agent.leader: started routine: routine="peering deferred deletion"
+2023-12-06T20:56:53.718Z [INFO]  agent.leader: started routine: routine="namespace deferred deletion"
+2023-12-06T20:56:53.718Z [INFO]  agent.leader: started routine: routine="partition deferred deletion"
+2023-12-06T20:56:53.917Z [INFO]  connect.ca: updated root certificates from primary datacenter
+2023-12-06T20:56:53.917Z [INFO]  connect.ca: initialized primary datacenter CA with provider: provider=consul
+2023-12-06T20:56:53.917Z [INFO]  agent.leader: started routine: routine="intermediate cert renew watch"
+2023-12-06T20:56:53.917Z [INFO]  agent.leader: started routine: routine="CA root pruning"
+2023-12-06T20:56:53.917Z [INFO]  agent.leader: started routine: routine="CA root expiration metric"
+2023-12-06T20:56:53.917Z [INFO]  agent.leader: started routine: routine="CA signing expiration metric"
+2023-12-06T20:56:53.917Z [INFO]  agent.leader: started routine: routine="virtual IP version check"
+2023-12-06T20:56:53.917Z [INFO]  agent.leader: started routine: routine="config entry controllers"
+2023-12-06T20:56:54.114Z [INFO]  agent.leader: stopping routine: routine="virtual IP version check"
+2023-12-06T20:56:54.114Z [INFO]  agent.leader: stopped routine: routine="virtual IP version check"
+2023-12-06T20:56:54.114Z [INFO]  agent.server.reporting: reporting agent is started
+2023-12-06T20:56:54.115Z [INFO]  agent.server: member joined, marking health alive: member=consul-consul-server-0 partition=default
+2023-12-06T20:56:54.310Z [INFO]  agent.server: federation state anti-entropy synced
+2023-12-06T20:56:54.410Z [INFO]  agent: Synced node info
+2023-12-06T20:56:55.415Z [ERROR] agent.server.autopilot: Failed to reconcile current state with the desired state
+2023-12-06T21:00:10.573Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:54140 error="ACL support disabled"
+2023-12-06T21:00:11.279Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:54140 error="ACL support disabled"
+2023-12-06T21:00:11.671Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:53742 error="ACL support disabled"
+2023-12-06T21:00:12.204Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:53742 error="ACL support disabled"
+2023-12-06T21:00:12.673Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:53742 error="ACL support disabled"
+2023-12-06T21:00:13.471Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:53742 error="ACL support disabled"
+2023-12-06T21:00:26.835Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:53742 error="ACL support disabled"
+2023-12-06T21:00:31.590Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:53742 error="ACL support disabled"
+2023-12-06T21:00:32.143Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:53742 error="ACL support disabled"
+2023-12-06T21:00:52.341Z [ERROR] agent.http: Request error: method=GET url=/v1/namespace/prod?dc=dc1 from=10.244.0.9:53742 error="Namespace not found for \"prod\""
+2023-12-06T21:00:52.539Z [ERROR] agent.http: Request error: method=GET url="/v1/config/service-defaults/server?dc=dc1&ns=prod" from=10.244.0.9:53742 error="Config entry not found for \"service-defaults\" / \"server\""
+2023-12-06T21:00:59.211Z [ERROR] agent.http: Request error: method=GET url=/v1/namespace/dev?dc=dc1 from=10.244.0.9:53742 error="Namespace not found for \"dev\""
+2023-12-06T21:00:59.723Z [ERROR] agent.http: Request error: method=GET url="/v1/config/service-defaults/server?dc=dc1&ns=dev" from=10.244.0.9:53742 error="Config entry not found for \"service-defaults\" / \"server\""
+2023-12-06T21:07:44.809Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:36650 error="ACL support disabled"
+2023-12-06T21:07:52.963Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:36650 error="ACL support disabled"
+2023-12-06T21:07:53.456Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:36650 error="ACL support disabled"
+2023-12-06T21:07:53.957Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:36650 error="ACL support disabled"
+2023-12-06T21:07:54.254Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:36650 error="ACL support disabled"
+2023-12-06T21:10:34.550Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:39538 error="ACL support disabled"
+[{Kind:http-route Name:gateway-00-http-fc393ca6 Parents:[] Rules:[{Filters:{Headers:[] URLRewrite:<nil> RetryFilter:<nil> TimeoutFilter:<nil> JWT:<nil>} ResponseFilters:{Headers:[]} Matches:[{Headers:[] Method: Path:{Match:prefix Value:/} Query:[]}] Services:[{Name:server Weight:1 Filters:{Headers:[] URLRewrite:<nil> RetryFilter:<nil> TimeoutFilter:<nil> JWT:<nil>} ResponseFilters:{Headers:[]} EnterpriseMeta:{Partition:default Namespace:dev}}]}] Hostnames:[server.dev] Meta:map[datacenter:dc1 k8s-name:gateway-00 k8s-namespace:default] Status:{Conditions:[]} EnterpriseMeta:{Partition:default Namespace:default} RaftIndex:{CreateIndex:0 ModifyIndex:0}}]
+{DestinationType: DestinationNamespace:default DestinationPartition:default DestinationPeer: DestinationName:gateway-00-http-fc393ca6 Datacenter: LocalBindAddress: LocalBindPort:80 LocalBindSocketPath: LocalBindSocketMode: Config:map[protocol:http] MeshGateway:{Mode:} IngressHosts:[server.dev] CentrallyConfigured:false}
+default/default/gateway-00-http-fc393ca6
+&{ServiceName:gateway-00-http-fc393ca6 Namespace:default Partition:default Datacenter:dc1 CustomizationHash: Default:false Protocol:http ServiceMeta:map[datacenter:dc1 k8s-name:gateway-00 k8s-namespace:default] EnvoyExtensions:[] StartNode:router:gateway-00-http-fc393ca6.default.default Nodes:map[resolver:server.dev.default.dc1:0xc0009bbb00 router:gateway-00-http-fc393ca6.default.default:0xc0009bba40] Targets:map[gateway-00-http-fc393ca6.default.default.dc1:gateway-00-http-fc393ca6.default.default.dc1 server.dev.default.dc1:server.dev.default.dc1] AutoVirtualIPs:[] ManualVirtualIPs:[]}
+name:"gateway-00-http-fc393ca6"  domains:"server.dev"  domains:"server.dev:80"  routes:{match:{prefix:"/"}  route:{cluster:"server.dev.dc1.internal.ac4e9ebf-020f-42c9-3fef-e1a89d124448.consul"}}
+2023-12-06T21:10:36.251Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:39538 error="ACL support disabled"
+[{Kind:http-route Name:gateway-00-http-fc393ca6 Parents:[] Rules:[{Filters:{Headers:[] URLRewrite:<nil> RetryFilter:<nil> TimeoutFilter:<nil> JWT:<nil>} ResponseFilters:{Headers:[]} Matches:[{Headers:[] Method: Path:{Match:prefix Value:/} Query:[]}] Services:[{Name:server Weight:1 Filters:{Headers:[] URLRewrite:<nil> RetryFilter:<nil> TimeoutFilter:<nil> JWT:<nil>} ResponseFilters:{Headers:[]} EnterpriseMeta:{Partition:default Namespace:dev}}]}] Hostnames:[server.dev] Meta:map[datacenter:dc1 k8s-name:gateway-00 k8s-namespace:default] Status:{Conditions:[]} EnterpriseMeta:{Partition:default Namespace:default} RaftIndex:{CreateIndex:0 ModifyIndex:0}} {Kind:http-route Name:gateway-00-http-fa86a908 Parents:[] Rules:[{Filters:{Headers:[] URLRewrite:<nil> RetryFilter:<nil> TimeoutFilter:<nil> JWT:<nil>} ResponseFilters:{Headers:[]} Matches:[{Headers:[] Method: Path:{Match:prefix Value:/} Query:[]}] Services:[{Name:server Weight:1 Filters:{Headers:[] URLRewrite:<nil> RetryFilter:<nil> TimeoutFilter:<nil> JWT:<nil>} ResponseFilters:{Headers:[]} EnterpriseMeta:{Partition:default Namespace:prod}}]}] Hostnames:[server.prod] Meta:map[datacenter:dc1 k8s-name:gateway-00 k8s-namespace:default] Status:{Conditions:[]} EnterpriseMeta:{Partition:default Namespace:default} RaftIndex:{CreateIndex:0 ModifyIndex:0}}]
+{DestinationType: DestinationNamespace:default DestinationPartition:default DestinationPeer: DestinationName:gateway-00-http-fc393ca6 Datacenter: LocalBindAddress: LocalBindPort:80 LocalBindSocketPath: LocalBindSocketMode: Config:map[protocol:http] MeshGateway:{Mode:} IngressHosts:[server.dev] CentrallyConfigured:false}
+default/default/gateway-00-http-fc393ca6
+&{ServiceName:gateway-00-http-fc393ca6 Namespace:default Partition:default Datacenter:dc1 CustomizationHash: Default:false Protocol:http ServiceMeta:map[datacenter:dc1 k8s-name:gateway-00 k8s-namespace:default] EnvoyExtensions:[] StartNode:router:gateway-00-http-fc393ca6.default.default Nodes:map[resolver:server.dev.default.dc1:0xc0011ff680 resolver:server.prod.default.dc1:0xc0011ff6e0 router:gateway-00-http-fc393ca6.default.default:0xc0011ff740] Targets:map[gateway-00-http-fc393ca6.default.default.dc1:gateway-00-http-fc393ca6.default.default.dc1 server.dev.default.dc1:server.dev.default.dc1 server.prod.default.dc1:server.prod.default.dc1] AutoVirtualIPs:[] ManualVirtualIPs:[]}
+name:"gateway-00-http-fc393ca6"  domains:"server.dev"  domains:"server.dev:80"  routes:{match:{prefix:"/"}  route:{cluster:"server.dev.dc1.internal.ac4e9ebf-020f-42c9-3fef-e1a89d124448.consul"}}
+{DestinationType: DestinationNamespace:default DestinationPartition:default DestinationPeer: DestinationName:gateway-00-http-fa86a908 Datacenter: LocalBindAddress: LocalBindPort:80 LocalBindSocketPath: LocalBindSocketMode: Config:map[protocol:http] MeshGateway:{Mode:} IngressHosts:[server.prod] CentrallyConfigured:false}
+default/default/gateway-00-http-fa86a908
+&{ServiceName:gateway-00-http-fa86a908 Namespace:default Partition:default Datacenter:dc1 CustomizationHash: Default:false Protocol:http ServiceMeta:map[datacenter:dc1 k8s-name:gateway-00 k8s-namespace:default] EnvoyExtensions:[] StartNode:router:gateway-00-http-fa86a908.default.default Nodes:map[resolver:server.dev.default.dc1:0xc0011ff980 resolver:server.prod.default.dc1:0xc0011ffa40 router:gateway-00-http-fa86a908.default.default:0xc0011ff9e0] Targets:map[gateway-00-http-fa86a908.default.default.dc1:gateway-00-http-fa86a908.default.default.dc1 server.dev.default.dc1:server.dev.default.dc1 server.prod.default.dc1:server.prod.default.dc1] AutoVirtualIPs:[] ManualVirtualIPs:[]}
+name:"gateway-00-http-fa86a908"  domains:"server.prod"  domains:"server.prod:80"  routes:{match:{prefix:"/"}  route:{cluster:"server.dev.dc1.internal.ac4e9ebf-020f-42c9-3fef-e1a89d124448.consul"}}
+2023-12-06T21:10:36.850Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:35786 error="ACL support disabled"
+2023-12-06T21:10:37.451Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:35786 error="ACL support disabled"
+2023-12-06T21:10:37.751Z [ERROR] agent.http: Request error: method=PUT url=/v1/acl/policy?dc=dc1 from=10.244.0.9:35786 error="ACL support disabled"

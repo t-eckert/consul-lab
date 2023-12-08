@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: refg
+spec:
+  from:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    namespace: prod
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    namespace: dev
+  to:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
