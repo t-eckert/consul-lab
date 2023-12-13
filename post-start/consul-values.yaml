@@ -5,4 +5,4 @@ global:
 connectInject:
   sidecarProxy:
     lifecycle:
-      defaultStartupGracePeriodSeconds: 30
+      defaultStartupGracePeriodSeconds: 300

@@ -9,13 +9,14 @@ make dev-docker
 kind load docker-image consul-dataplane:local 
 cd -
 
-cd $CONSUL_K8S
-make dev-docker
-kind load docker-image consul-k8s-control-plane:local
-cd -
+# cd $CONSUL_K8S
+# make dev-docker
+# kind load docker-image consul-k8s-control-plane:local
+# cd -
 
 helm install consul $HELM_CHART -f ./consul-values.yaml --namespace consul --create-namespace --wait
 
 kubectl apply -f ../resources/server.yaml
+
 
 
